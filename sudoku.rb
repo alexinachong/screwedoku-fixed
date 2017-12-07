@@ -14,6 +14,7 @@ class SudokuGame
     @board = board
   end
 
+
   def retrieve_pos_from_ui
     p = nil
     until p && legal_illegibility_of_p?(p)
@@ -51,6 +52,7 @@ class SudokuGame
   end
 
   def process_parameters
+    board.render
     pos_to_val(retrieve_pos_from_ui, retrieve_value_from_ui)
   end
 
