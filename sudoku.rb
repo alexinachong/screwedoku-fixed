@@ -1,8 +1,6 @@
 require_relative "board"
 require 'colorize'
 
-puts "Only contractors write code this bad.".yellow
-
 class SudokuGame
   def self.from_file(filename)
     board = Board.from_file(filename)
@@ -46,7 +44,7 @@ class SudokuGame
     until val && valid_val?(val)
       puts "Please enter a value between 1 and 9 (0 to clear the tile)"
       print "> "
-      val = parse_val(gets)
+      val = parse_val(gets.chomp)
     end
     val
   end
@@ -72,7 +70,7 @@ class SudokuGame
     if pos.is_a?(Array) &&
       pos.length == 2 &&
       pos.all? { |x| x.between?(0, board.size - 1) }
-      return true
+      true
     else
       get_pos
     end
@@ -84,6 +82,7 @@ class SudokuGame
   end
 
   private
+
   attr_reader :board
 end
 
